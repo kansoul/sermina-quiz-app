@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-const kSecondaryColor = Color(0xFF8B94BC);
+const kSecondaryColor = Color.fromARGB(255, 112, 128, 221);
+const kPointColor = Color.fromARGB(255, 252, 202, 186);
+
 const kGreenColor = Color(0xFF6AC259);
 const kRedColor = Color(0xFFE92E30);
 const kGrayColor = Color(0xFFC1C1C1);

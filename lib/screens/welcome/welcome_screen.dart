@@ -10,51 +10,68 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/icons/quiz_bg.jpg'), // Replace with your image path
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Spacer(flex: 2), //2/6
+                  const Image(
+                    image: AssetImage(
+                        'assets/icons/quiz_text.png'), // Replace with your image path
+                    width: 350.0, // Adjust width as needed
+                    height: 350.0, // Adjust height as needed
+                  ),
                   Text(
-                    "Let's Play Quiz,",
-                    style: Theme.of(context).textTheme.headline4?.copyWith(
+                    "Let's Play Quiz",
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  Text("Enter your informations below"),
-                  Spacer(), // 1/6
-                  TextField(
+                  const Text("Hãy nhập tên của bạn bên dưới"),
+                  const Spacer(), // 1/6
+                  const TextField(
+                    style: TextStyle(
+                      color: Colors.white, // Set your desired text color here
+                    ),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: Color(0xFF1C2341),
-                      hintText: "Full Name",
+                      fillColor: Color.fromARGB(255, 255, 178, 178),
+                      hintText: "Tên của bạn",
+                      hintStyle: TextStyle(color: Colors.white),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                     ),
                   ),
-                  Spacer(), // 1/6
+                  const Spacer(), // 1/6
                   InkWell(
-                    onTap: () => Get.to(QuizScreen()),
+                    onTap: () => Get.to(() => QuizScreen()),
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(kDefaultPadding * 0.75), // 15
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(kDefaultPadding * 1), // 15
+                      decoration: const BoxDecoration(
                         gradient: kPrimaryGradient,
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       child: Text(
-                        "Lets Start Quiz",
-                        style: Theme.of(context)
-                            .textTheme
-                            .button
-                            ?.copyWith(color: Colors.black),
+                        "Bắt đầu trò chơi",
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            color: Color.fromARGB(255, 255, 211, 211),
+                            fontSize: 20),
                       ),
                     ),
                   ),
-                  Spacer(flex: 2), // it will take 2/6 spaces
+                  const Spacer(flex: 2), // it will take 2/6 spaces
                 ],
               ),
             ),
