@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:seminar_flutter_app/screens/secret_app/secret_app_screen.dart';
 import '../welcome/welcome_screen.dart';
-import '/constants.dart';
 import '/controllers/question_controller.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ScoreScreen extends StatelessWidget {
   @override
@@ -24,20 +23,20 @@ class ScoreScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              Spacer(flex: 2),
+              const Spacer(flex: 2),
               const Image(
                 image: AssetImage(
                     'assets/icons/score.png'), // Replace with your image path
                 width: 350.0, // Adjust width as needed
                 height: 350.0, // Adjust height as needed
               ),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
               Text(
                 "${_qnController.numOfCorrectAns * 10}/${_qnController.questions.length * 10}",
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
               SizedBox(
                 width: 300.0,
                 height: 50.0, // Set your desired width here
@@ -53,7 +52,7 @@ class ScoreScreen extends StatelessWidget {
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.blue, // Text color
                   ),
-                  child: Text(
+                  child: const Text(
                     'Quay lại',
                     style: TextStyle(
                       fontSize: 20.0, // Adjust the font size
@@ -62,7 +61,21 @@ class ScoreScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(flex: 3),
+              Visibility(
+                visible: _qnController.numOfCorrectAns ==
+                    0, // Set your condition here
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SecretAppScreen()),
+                    );
+                  },
+                  child: const Text('Your Button Text'),
+                ),
+              ),
+              const Spacer(flex: 2),
             ],
           )
         ],

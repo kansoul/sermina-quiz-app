@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/constants.dart';
 import '/controllers/question_controller.dart';
-import '/models/Questions.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'progress_bar.dart';
 import 'question_card.dart';
@@ -32,12 +30,11 @@ class Body extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: ProgressBar(),
               ),
-              SizedBox(height: kDefaultPadding),
+              const SizedBox(height: kDefaultPadding),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -63,12 +60,12 @@ class Body extends StatelessWidget {
                   ),
                 ),
               ),
-              Divider(thickness: 1.5),
-              SizedBox(height: kDefaultPadding),
+              const Divider(thickness: 1.5),
+              const SizedBox(height: kDefaultPadding),
               Expanded(
                 child: PageView.builder(
                   // Block swipe to next qn
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _questionController.pageController,
                   onPageChanged: _questionController.updateTheQnNum,
                   itemCount: _questionController.questions.length,
