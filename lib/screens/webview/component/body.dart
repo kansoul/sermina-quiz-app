@@ -81,8 +81,7 @@ class _BodyState extends State<Body> {
             children: [
               InAppWebView(
                 key: webViewKey,
-                initialUrlRequest:
-                    URLRequest(url: Uri.parse("https://inappwebview.dev/")),
+                initialUrlRequest: URLRequest(url: Uri.parse(urlLinks)),
                 initialOptions: options,
                 pullToRefreshController: pullToRefreshController,
                 onWebViewCreated: (controller) {
@@ -164,9 +163,7 @@ class _BodyState extends State<Body> {
                   print(consoleMessage);
                 },
               ),
-              progress < 1.0
-                  ? LinearProgressIndicator(value: progress)
-                  : Container(),
+              progress < 1.0 ? Container() : Container(),
             ],
           ),
         ),

@@ -13,8 +13,8 @@ class Link {
 }
 
 Future<List<Link>> fetchLinks() async {
-  final response = await http
-      .get(Uri.parse("https://65138e308e505cebc2e9f359.mockapi.io/links"));
+  final response =
+      await http.get(Uri.parse("http://192.168.43.68:8081/api/links"));
 
   if (response.statusCode == 200) {
     List<dynamic> jsonData = json.decode(response.body);
@@ -41,7 +41,7 @@ class SecretAppScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-                'assets/icons/quiz_bg.jpg'), // Replace with your image path
+                'assets/icons/serect_bg.jpg'), // Replace with your image path
             fit: BoxFit.cover,
           ),
         ),
@@ -79,20 +79,29 @@ class SecretAppScreen extends StatelessWidget {
                     itemCount: links.length,
                     itemBuilder: (context, index) {
                       Link link = links[index];
-
+                      print("http://192.168.43.68:8081/${link.url}");
                       return GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => WebviewScreen(
-                                      urlLinks: 'https://inappwebview.dev/',
+                                      urlLinks: link.url,
                                     ))),
                         child: Card(
                           child: Column(
                             children: [
-                              const Icon(Icons.link),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    "http://192.168.43.68:8081/${link.icon}"),
+                                radius: 20.0,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Text(link.name),
-                              Text(link.url),
                             ],
                           ),
                         ),

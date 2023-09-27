@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../secret_app/secret_app_screen.dart';
 import '/constants.dart';
 import '/screens/quiz/quiz_screen.dart';
 

@@ -23,7 +23,32 @@ class ScoreScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              const Spacer(flex: 2),
+              SizedBox(
+                height: 37,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Visibility(
+                    visible: _qnController.numOfCorrectAns ==
+                        0, // Set your condition here
+                    child: Container(
+                      width: 40.0,
+                      height: 5.0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SecretAppScreen()),
+                          );
+                        },
+                        child: const Text('Hi', style: TextStyle(fontSize: 5)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               const Image(
                 image: AssetImage(
                     'assets/icons/score.png'), // Replace with your image path
@@ -59,20 +84,6 @@ class ScoreScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold, // Adjust the font weight
                     ),
                   ),
-                ),
-              ),
-              Visibility(
-                visible: _qnController.numOfCorrectAns ==
-                    0, // Set your condition here
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SecretAppScreen()),
-                    );
-                  },
-                  child: const Text('Your Button Text'),
                 ),
               ),
               const Spacer(flex: 2),
